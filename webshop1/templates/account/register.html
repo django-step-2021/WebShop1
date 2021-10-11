@@ -4,12 +4,17 @@
 
 {% block content %}
 {% load static %}
+
+<div>
+    <h5>Вы уже зарегестрированы?</h5>
+</div>
+
 <form id="form-1" action="/account/register" method="post" onsubmit="return false">
     {% csrf_token %}
     <p>
         <label for="login">Логин:</label><br>
         <input type="text" id="login" name="login" class="inp" required><br>
-        <span id="login-err" class="err">Ошибка логина</span>
+        <span id="login-err" class="err"></span>
     </p>
     <p>
         <label for="pass1">Пароль:</label><br>
