@@ -6,7 +6,13 @@
 {% load static %}
 
 <div>
-    <h5>Вы уже зарегестрированы?</h5>
+    <h4>
+        Вы уже зарегестрированы? &nbsp; > &nbsp;
+        <span>
+            <a style="color: blue; font-size: 0.8em" href="/account/entry">Вход</a>
+        </span>
+    </h4>
+    <hr>
 </div>
 
 <form id="form-1" action="/account/register" method="post" onsubmit="return false">
@@ -55,4 +61,5 @@
         margin-right: 5px;
     }
 </style>
+<script src="{% static 'js/register.js' %}"></script>
 {% endblock content %}

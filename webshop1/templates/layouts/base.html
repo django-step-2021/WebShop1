@@ -17,7 +17,7 @@
  		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
  		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
  		<![endif]-->
-
+		<script src="{% static 'js/jquery.min.js' %}"></script>
     </head>
 	<body>
 		<!-- HEADER -->
@@ -31,8 +31,27 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
 					</ul>
 					<ul class="header-links pull-right">
+						<li>
+							<a href="#" style="margin-right: 50px; color: lime;">
+								Hi,
+								{% if not user.is_authenticated %}
+									Guest!
+								{% else %}
+									{{ user.username }}
+								{% endif %}
+							</a>
+						</li>
 						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-						<li><a href="/account/register"><i class="fa fa-user-o"></i> My Account</a></li>
+												<li>
+							<a href="#" style="margin-right: 50px; color: lime;">
+								{% if not user.is_authenticated %}
+									<a href="/account/register"><i class="fa fa-user-o"></i>Login</a>
+								{% else %}
+									<a href="/account/logout"><i class="fa fa-user-o"></i>Logout</a>
+								{% endif %}
+							</a>
+						</li>
+
 					</ul>
 				</div>
 			</div>
@@ -154,9 +173,8 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="/">Home</a></li>
-						<li><a href="#">Hot Deals</a></li>
-						<li><a href="#">Categories</a></li>
+						<li class="active"><a href="/">Главная</a></li>
+						<li><a href="/goods">Каталог</a></li>
 						<li><a href="#">Laptops</a></li>
 						<li><a href="#">Smartphones</a></li>
 						<li><a href="#">Cameras</a></li>
@@ -339,12 +357,10 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
-		<script src="{% static 'js/jquery.min.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
 		<script src="{% static 'js/slick.min.js' %}"></script>
 		<script src="{% static 'js/nouislider.min.js' %}"></script>
 		<script src="{% static 'js/jquery.zoom.min.js' %}"></script>
 		<script src="{% static 'js/main.js' %}"></script>
-		<script src="{% static 'js/register.js' %}"></script>
 	</body>
 </html>
