@@ -4,7 +4,6 @@ from categories.models import Category
 
 
 class Product(models.Model):
-
     title = models.CharField(max_length=100)
     about = models.TextField(max_length=500)
     picture = models.FileField(upload_to='pictures/')
