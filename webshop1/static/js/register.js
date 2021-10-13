@@ -11,11 +11,23 @@ $(document).ready(function() {
         let loginX = $('#login').val();
         let loginR = /^[a-zA-Z]+[a-zA-Z0-9_]{5,16}$/;
         if (loginR.test(loginX)) {
-            $('#login-err').text('');
             res1 = true;
             // проверка занятости ...
+            $.ajax({
+                url: '/account/ajax_reg',
+                data: 'login=' + loginX,
+                success: function(result) {
+                    if (result.message === 'занят') {
+                        $('#login-err').text('Логин занят!');
+                        res1 = false;
+                    } else {
+                        $('#login-err').text('');
+                        res1 = true;
+                    }
+                },
+            });
         } else {
-            $('#login-err').text('Логин - не правильный')
+            $('#login-err').text('Логин - не правильный');
             res1 = false;
         }
     });

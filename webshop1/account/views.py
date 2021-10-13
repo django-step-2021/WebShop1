@@ -74,3 +74,14 @@ def sign_out(request):
         'page_app': 'account',
         'page_view': 'sign_out',
     })
+
+
+def ajax_reg(request):
+    response = dict()
+    login_y = request.GET.get('login')
+    try:
+        User.objects.get(username=login_y)
+        response['message'] = 'занят'
+    except User.DoesNotExist:
+        response['message'] = 'свободен'
+    return JsonResponse(response)
