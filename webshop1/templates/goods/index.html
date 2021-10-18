@@ -193,12 +193,12 @@
 					<div id="store" class="col-md-9">
 						<!-- store products -->
 						<div class="row">
-							{% for p in all_products %}
+							{% for p in products %}
 								<!-- product -->
-								<div class="col-md-4 col-xs-6">
+								<div class="col-md-4 col-xs-6" style="height: 400px">
 									<div class="product">
 										<div class="product-img">
-											<img src="/media/{{ p.picture }}" alt="">
+											<img src="/media/{{ p.picture }}" style="height: 150px">
 											<div class="product-label">
 												<span class="sale">-30%</span>
 												<span class="new">NEW</span>
@@ -231,6 +231,30 @@
 							{% endfor %}
 						</div>
 						<!-- /store products -->
+
+						<!-- my-pagination-panel -->
+						<div class="pagination" style="margin-top: 20px; font: 12pt 'Consolas';">
+							<span class="step-links">
+								{% if products.has_previous %}
+									<a href="?page=1">&laquo; First</a>
+									&nbsp;
+									<a href="?page={{ products.previous_page_number }}">Prev</a>
+								{% endif %}
+
+								&nbsp;&nbsp;
+								<span class="current">
+									Page {{ products.number }} of {{ products.paginator.num_pages }}
+								</span>
+								&nbsp;&nbsp;
+
+								{% if products.has_next %}
+									<a href="?page={{ products.next_page_number }}">Next</a>
+									&nbsp;
+									<a href="?page={{ products.paginator.num_pages }}">Last &raquo;</a>
+								{% endif %}
+							</span>
+						</div>
+						<!-- /my-pagination-panel -->
 
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
