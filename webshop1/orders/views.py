@@ -23,3 +23,11 @@ def ajax_cart(request):
     response['cost'] = cost
     response['count'] = len(user_orders)
     return JsonResponse(response)
+
+
+def index(request):
+    return render(request, 'orders/index.html', context={
+        'page_name': 'Ваш заказ',
+        'page_app': 'orders',
+        'page_view': 'index',
+    })
