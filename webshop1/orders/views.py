@@ -47,3 +47,11 @@ def ajax_cart_display(request):
     response['cost'] = cost
     response['count'] = len(user_orders)
     return JsonResponse(response)
+
+
+def checkout(request):
+    return render(request, 'orders/checkout.html', context={
+        'page_name': 'Оформление заказа',
+        'page_app': 'checkout',
+        'page_view': 'checkout'
+    })
