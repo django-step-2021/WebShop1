@@ -17,6 +17,8 @@ $(document).ready(function() {
                 success: function (result) {
                     alert('Товар будет добавлен в корзину!');
                     $('#count').text(result.count);
+                    $('#amount').text(`Количество товаров: ${result.count} шт.`);
+                    $('#cost').text(`Общая стоимость: ${result.cost} грн.`);
                 }
             });
         }
